@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "A student in the system.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the student" },
+        "class": { "type": "string", "description": "Class or grade level" },
+        "gender": { "type": "string", "enum": ["Male", "Female"], "description": "Gender of the student" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the student was added" }
+      },
+      "required": ["name", "class", "gender"]
+    },
+    "Subject": {
+      "title": "Subject",
+      "description": "A subject taught in the school.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the subject" },
+        "code": { "type": "string", "description": "Subject code (e.g., MATH101)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the subject was added" }
+      },
+      "required": ["name", "code"]
+    },
+    "Result": {
+      "title": "Result",
+      "description": "A student's score in a specific subject.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "ID of the student" },
+        "subjectId": { "type": "string", "description": "ID of the subject" },
+        "score": { "type": "number", "description": "Numerical score (0-100)" },
+        "grade": { "type": "string", "description": "Letter grade (A, B, C, D, F)" },
+        "term": { "type": "string", "description": "Academic term (e.g., Term 1)" },
+        "year": { "type": "string", "description": "Academic year (e.g., 2026)" },
+        "authorUid": { "type": "string", "description": "UID of the teacher who entered the result" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the result was recorded" }
+      },
+      "required": ["studentId", "subjectId", "score", "grade", "term", "year", "authorUid"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A user of the system (admin or teacher).",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "Email address" },
+        "role": { "type": "string", "enum": ["admin", "teacher"], "description": "User role" }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/students/{studentId}": { "schema": "Student", "description": "Collection of students" },
+    "/subjects/{subjectId}": { "schema": "Subject", "description": "Collection of subjects" },
+    "/results/{resultId}": { "schema": "Result", "description": "Collection of exam results" },
+    "/users/{userId}": { "schema": "User", "description": "User profiles and roles" }
+  }
+}
