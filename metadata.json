@@ -1,5 +1,5 @@
 {
   "name": "Mfumo wa Matokeo (Results Management System)",
-  "description": "Mfumo rahisi wa kusimamia na kuweka matokeo ya wanafunzi, masomo, na madaraja.",
+  "description": "Mfumo rahisi wa kusimamia na kuweka matokeo ya wanafunzi, masomo, na madaraja kwa kutumia Firebase Realtime Database.",
   "requestFramePermissions": []
 }
